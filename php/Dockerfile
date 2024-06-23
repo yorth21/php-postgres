@@ -1,0 +1,10 @@
+FROM php:7.4-apache
+
+# Instala las bibliotecas necesarias para PostgreSQL
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
+COPY index.php /var/www/html/
+
+EXPOSE 80
